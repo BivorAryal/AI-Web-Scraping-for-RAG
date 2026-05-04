@@ -32,7 +32,7 @@ git clone https://github.com/BivorAryal/AI-Web-Scraping-for-RAG.git
 cd AI-Web-Scraping-for-RAG
 
 # Install dependencies with uv
-uv syncuv sync
+uv sync
 ```
 This will create/refresh a `.venv` based on `pyproject.toml` + `uv.lock`.
 
