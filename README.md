@@ -28,9 +28,11 @@ Prerequisites:
 
 ### 1. Clone & Install
 ```bash
-git clone <your-repo-url> mcp-server-python
-cd mcp-server-python
-uv sync
+git clone https://github.com/BivorAryal/AI-Web-Scraping-for-RAG.git
+cd AI-Web-Scraping-for-RAG
+
+# Install dependencies with uv
+uv syncuv sync
 ```
 This will create/refresh a `.venv` based on `pyproject.toml` + `uv.lock`.
 
@@ -47,9 +49,10 @@ uv run mcp_server.py
 ```
 The server will start and wait on stdio (no extra output unless you add logging). It registers the tool `get_docs`.
 
-### 4. Use the Provided Client
+### 4. Use the Provided Clients
 ```bash
 uv run client.py
+uv run client_with_logger.py
 ```
 You should see something like:
 ```
@@ -67,6 +70,8 @@ File overview:
 | File | Purpose |
 |------|---------|
 | `mcp_server.py` | Defines `FastMCP` instance and implements `search_web`, `fetch_url`, and the `get_docs` tool. |
+|`client_with_logger.py`	| Starts the server, lists available tools, calls get_docs, then runs everything through an LLM
+|`streamlit_app.py` | Web interface if you don't want to use the command line
 | `client.py` | Launches server via stdio, lists tools, calls `get_docs`, then feeds result to an LLM for a user-friendly answer. |
 | `utils.py` | HTML cleaning helper (currently uses LLM + `trafilatura` for extraction and Groq for chunk transformation). |
 | `.env` | Environment variables (excluded from VCS). |
